@@ -198,4 +198,23 @@ pwn.college{oBJYp6YbQkKnvdPYqoFjOS1gVRQ.QXxUTN0wCM3gjNzEzW}
 - https://pwn.college/linux-luminarium/paths/ [Module- Pondering Paths]
 
 ## Challenge 9: Home sweet home
+Workings of the home directory
+### My solve
+**Flag:** `pwn.college{UuAYQj3c4vUfHj0Cs0wKaQlA1MF.QXzMDO0wCM3gjNzEzW}`
+
+```bash
+  hacker@paths~home-sweet-home:~$ /challenge/run ~/f
+Writing the file to /home/hacker/f!
+... and reading it back to you:
+pwn.college{UuAYQj3c4vUfHj0Cs0wKaQlA1MF.QXzMDO0wCM3gjNzEzW}
+Explore ways to explicitly run relative paths
+
+```
+
+### What I learned
+- *~* expands to */home/hacker* (this is in our case, since our home directory is /home/hacker)
+- *cd* command by default directs us to the home directory
+
+### References 
+- https://pwn.college/linux-luminarium/paths/ [Module- Pondering Paths]
    
