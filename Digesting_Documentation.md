@@ -19,22 +19,21 @@ pwn.college{gSWDpctRso9vd7seY73BRxuXcZv.QX0ITO0wCM3gjNzEzW}
 - giving different arguments will help perform different functions using the same commands.
 
 
-## Challenge 2: Catting absolute paths
-   cat (or read) files from absolute paths
+## Challenge 2: Learning complex usage
+   Commands can take arguments to their arguments
 ### My solve
-**Flag:** `pwn.college{A8wmh-H8h6KQ5tJzmjE9PH8TyXc.QX5ETO0wCM3gjNzEzW}`
+**Flag:** `pwn.college{IcYAXOKxsLMUoOirYqPOX7YSfFz.QX1ITO0wCM3gjNzEzW}`
 
-The flag is not stored in the home directory. Thus, we need to use absolute paths to access it.
+*/flag* is the argument to *--printfile*
 
 ```bash
-hacker@commands~catting-absolute-paths:~$ cat /flag
-pwn.college{A8wmh-H8h6KQ5tJzmjE9PH8TyXc.QX5ETO0wCM3gjNzEzW}
+hacker@man~learning-complex-usage:~$ /challenge/challenge --printfile /flag
+Correct argument! Here is the /flag file:
+pwn.college{IcYAXOKxsLMUoOirYqPOX7YSfFz.QX1ITO0wCM3gjNzEzW}
 ```
 
 ### What I learned
-Since the flag is stored in the absolute file "/flag", we need to change our cat command arguments. 
-- One way to access the file is by changing the directory, but since we need to learn how to use "cat" command, we shall not use "cd"
-- Thus, we can read the flag file by using the absolute path "/flag" as its argument.
+- As a more complex usage, arguments of commands can also take arguments
 
 ### References 
 no references
