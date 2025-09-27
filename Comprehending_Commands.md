@@ -373,11 +373,18 @@ pwn.college{cT5rKRMMJaxADWB8qIpPcH7pWdt.QXyMDO0wCM3gjNzEzW}
 ## Challenge 14: linking files
   How to link one file to another.
 ### My solve
-**Flag:** ``
+**Flag:** `pwn.college{Y4Ltk8PPS4RcCmquBMnLJ4LFYj8.QX5ETN1wCM3gjNzEzW}`
 
-
+Since, *~/not-the-flag* already existed, I first deleted it in order to create the symlink. Then I created a symlink to */flag* and ran */challenge/catflag*
 
 ```bash
+hacker@commands~linking-files:~$ ln -s /flag not-the-flag
+ln: failed to create symbolic link 'not-the-flag': File exists
+hacker@commands~linking-files:~$ rm ~/not-the-flag
+hacker@commands~linking-files:~$ ln -s /flag not-the-flag
+hacker@commands~linking-files:~$ /challenge/catflag
+About to read out the /home/hacker/not-the-flag file!
+pwn.college{Y4Ltk8PPS4RcCmquBMnLJ4LFYj8.QX5ETN1wCM3gjNzEzW}
 
 ```
 
