@@ -35,8 +35,11 @@ Now I will sleep for a while (so that you could find me with 'ps').
 
 ### What I learned
  - *ps* can take it various arguments to make it more useful
-  - 
-  - 
+  - *-e* = List every process
+  - *-f* = List full process (togther form *-ef*)
+  - *a* = list for all users
+  - *u* = Output is readable by the user
+  - *x* = list of processes not running in terminal (together form aux (*BSD syntax*))
 
 
 ## Challenge 2: Killing processes
