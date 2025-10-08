@@ -101,7 +101,8 @@ You look around and discover a chamber containing a vast archive of Daft Punk’
 ### Solve
 - In the github changes.txt file, changes 56, 122, 279 are missing
 - Looking through the past commits, we see the commits 56, 122, 279 replaced with secret chunks 1, 2, 3
-- attatch the chunks and decode using b64
+- concatenate the chunks and get a text which is encoded
+- Thus, we decode using b64 to get flag '\n'
 Flag: ```citadel{w3_4r3_up_4ll_n1t3_t0_g1t_lucky}```
 
 
@@ -116,9 +117,9 @@ Note: Separate the words in the flag with _ and make it UPPERCASE. Example: cita
 
 ### Solve
 - used https://databorder.com/transfer/morse-sound-receiver/ to play the morse code
-- The morse does not display message at first, we need to increase the frequency to like 750 for the letters to come
-- on the spectogram, *citadel{* appears
-- we use the part of text encoded within {} brackets
+- The morse does not display message at first (there is background music messing with the code) we need to increase the frequency to like 750 for the letters to come
+- There a long message decoded (which is not the answer)
+- on the spectogram, *citadel{* appears. We use the part of text encoded within {} brackets
 Flag: ```citadel{1_L0V3_1DM}```
 
 
@@ -155,6 +156,7 @@ The message lies beneath the surface. Push it three steps forward in the cycle o
 - A text file is also given with numbers 
   *6895840967002953721051398351211751734500850509315790892845302801984496338433523326225010635779036738800318*
 - The python code gives us the code as 3. We shift the numbers by 3 and convert it to string to get the flag
+
 Flag: ```citadel{br0_r34lly_unr0tt3d_m3_b4ck_t0_l1f3}```
 
 
@@ -250,6 +252,7 @@ The flag is hidden in these digital footprints across music platforms and split 
 - Spotify : On their profile, there is one playlist, the playlist description has the 3rd part of flag
 - from description we see hint as *last* (last.fm) where the first part of flag is in the shoutbox
 - rateyourmusic has the 2nd part of the flag
+
 Flag: ```citadel{c0mputers_st0pped_exchang1ng_1nf0rmat10n_n_started_shar1ng_st0r1es_n_then_they_were_n0where_t0_be_f0und}```
 
 
@@ -263,7 +266,8 @@ Allegedly, the message contained an image that predicted the rise of the Citadel
 ### Solve
 We are given a .pcap file (thus we can see the network traffic)
 - We can see the ICMP (error detecting) has 2 packets. We searched for image file in it (Since description hinted at *image*) (could not find image file in TCP) and we found one jpg header in the 1st and 2nd ICMP packet
-- We extracted the image bytes using CLI `tshark -r challenge.pcap -Y "icmp" -w icmp_packets.pcap` and visualised it in a Hex editor 
+- We extracted the image bytes using CLI `tshark -r challenge.pcap -Y "icmp" -w icmp_packets.pcap` and visualised it in a Hex editor.
+
 Flag: ```citadel{1_r34lly_w4nt_t0_st4y_4t_y0ur_h0us3}```
 
 
@@ -277,6 +281,7 @@ The guardian of this floor steps from the shadows. Known only as Jack the Ripper
 - the file with *$2a$04$RNoyoWAcW0StwSri4YN1Eeb2j1gBNKutDOMxsLzfyfSvB/ghMHToa* to be decoded
 - We decrypted the code in a hash identifier to come to *bcrypt $2*$, Blowfish (Unix)* as algorithm
 - To get password from wordlist.txt, we use *john* command (learnt in pwn.college). This gets us the password as `fake_flag_4_fake_pl4y3rs` 
+
 Flag: ```citadel{fake_flag_4_fake_pl4y3rs}```
 
 
