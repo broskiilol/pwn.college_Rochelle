@@ -33,9 +33,11 @@ Flag: ```citadel{17_1s_jus7_7h3_b3g1nn1ng}```
 As you step into the second chamber, a figure manifests before you. Before you stands a forgotten deity, a dead god spoken of only in whispers. Known by countless names: “Apostle of Epilogue and Eternity,” “Lone Messiah” and many more lost to time.
 
 They leave nothing but a single image, a relic carrying his final secret. Hidden within its layers lies the key to ascend to the next chamber.
+![alt text](<challenge (1).jpg>)
 
 ### Solve
 We get hint that key is *hidden within layers*. We manipulate the image by uploading in exiftool. Thus we get another image which contains the flag
+![alt text](flag.png)
 Flag: ```citadel{17_1s_jus7_7h3_b3g1nn1ng}```
 
 ## Challenge 4: Track8
@@ -65,6 +67,7 @@ Challenge: https://testofsweetness.citadel.cryptonitemit.in
 
 ### Solve
 The link takes us to a website which asks us to become an admin in order to enter it
+![alt text](image-1.png)
 - *how does the website remember you* This refers to the website cookies
 - On opening the cookies, we  see that we are saved as *user*, so we change it to *admin*, thus allowing us to get the flag
 Flag: ```citadel{fru1tc4k3_4nd_c00k13s}```
@@ -131,9 +134,11 @@ Challenge: https://therobotstrail.citadel.cryptonitemit.in
 
 ### Solve
 - the website opens to 5 decoy buttons, out of which none are correct. We use *inspect* to find the hidden hint
+  ![alt text](image-4.png)
 - On *hidden* class, we get hint to search */robots.txt*
+  ![alt text](image-5.png)
 - From here, we get hint as such 
-   *Sometimes system files like /etc/passwd can reveal interesting information*
+   ![alt text](image-6.png)
 - file */etc/passwd* tells us to *Check the web server config at /var/www/html/config.php:/home/webadmin:/bin/bash\n*
 - We are asked to *Check the access logs for unusual activity*
    and log has location */var/log/apache2/access.log*
@@ -171,6 +176,7 @@ Connection: nc chall_citadel.cryptonitemit.in 61234
 
 ### Solve
 - We need to solve the problem statement in given pdf
+  file:///C:/Users/Rochelle/Downloads/Coco_Conjecture.pdf
   We are given a network challenge where the server sends us random positive integers (`1 ≤ n ≤ 10^18`).  
   Our task is to compute how many steps it takes to reduce `n` to `1` using the following rules:
 
@@ -222,6 +228,7 @@ You must take the corrupted file and repair it to reveal the true code that will
 - we get a .wav file which is cannot play as it is corrupted (the extension is wrong, it should be a midi file as hinted by description *mid*)
 - Using hex editor, we change the file extention to midi file (change header to MThd)
 - opening the changed midi file in a music editor, we can see the keys played in it. The key pattern on screen shows us the flag.
+![alt text](image.png)
 Flag: ```citadel{8lackM1D1wa5c00l}```
 
 
@@ -298,6 +305,7 @@ Challenge: http://chall_citadel.cryptonitemit.in:32772/
 
 ### Solve
 - in the website link, we have an inputting area asking for pings.
+    ![alt text](image-3.png)
 - After trying various pings, we realise that many separators (like . , ; {} etc) are *malicious*
 - %0A is being accepted, so we use it to enter commands
 - *ls* command helps list out all files, out of which one is *mission_briefing.txt*
@@ -332,6 +340,7 @@ Challenge: https://databaseincursion.citadel.cryptonitemit.in
 
 ### Solve
 The link given opens to a website asking for username and password (both of which we do not know yet)
+![alt text](database_incursion.JPG)
 We use SQLi. We input something in the working payload which is always true (in this case, we inputted 1=1 which is always true)
 - From here, we come to a page where we have employee details (we need to enter admin password) Hint: *someone from management has the admin password.*
 - We see the management people `department='Management'--` and we see that *KIWI* has the password
@@ -349,6 +358,7 @@ Near the gate to the next floor you come across a CAPTCHA verification test, but
 
 ### Solve
 The image had a URL having overwriting.
+![alt text](BRATCHA.jpg)
 - the characters were `c/s g/q x/y h/n x/v B/D h/n S/Z`
 - This meant 256 possible outcomes. Listed down these 256 outcomes and pasted into https://httpstatus.io/ 
 - This showed the only url which was working, *https://pastebin.com/sqxnxBhZ* where we got the flag
@@ -368,6 +378,7 @@ Flag format: citadel{XX.XXX_XXX.XXX}
 
 ### Solve
 A picture is given. We can see mount Fuji in the distance, meaning its in Japan. The compass direction showed the place was North of Mt.Fuji
+![alt text](location.png)
 The description hints at a temple or a cemetary (also confirmed by the picture)
 
 - On Google Earth, approximate coordinates were coming as 35.XXX and 138.XXX
@@ -413,5 +424,6 @@ Rumor has it that the corporation predicted the rise of the Citadel. Within the 
 We are given a .pptm file instructing us to use macro. So we enable the developer tab and view the VBA (Visual Basic) code
 There are three parts to the code. The first part is Base32 encoded, second is base64 and third is base32. Each part is further divided into many strings. Concatenating all of the string parts and decoding them gets us the bytes of a JPG file (image, as seen by the header `FF D8 FF E0`)
 Each part of the code is a part of the image forming
+![alt text](image-2.png)
 (we did not decode the entire code, we decoded the major part of it and we could make out the flag from that itself)
 Flag: ```citadel{gr4b_y0ur_l4bubus_m4tch4s_4nd_dub41_ch0c0l4t3s_y0u_4r3_1n_f0r_4_r1d3}```
