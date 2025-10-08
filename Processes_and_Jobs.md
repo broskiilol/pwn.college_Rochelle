@@ -95,16 +95,55 @@ pwn.college{E4jB1vMTduaYnllMMr0HZNqin1x.QXzQDO0wCM3gjNzEzW}
 ## Challenge 4: Killing misbehaving processes
   
 ### My solve
-**Flag:** ``
-
+**Flag:** `pwn.college{cnBgyxZu_14qmwG0onOnBkQYSMu.0FNzMDOxwCM3gjNzEzW}`
+Listed all the ongoing processes, and killed the decoy process as needed. Ran *run* file which sent the flag to fifo. *cat*ted the fifo file to get A LOT of decoy flags, inturrupted it and redid the process to finally get one flag.
 
 
 ```bash
-
+hacker@processes~killing-misbehaving-processes:~$ ps -ef
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 13:22 ?        00:00:00 /sbin/docker-init -- /nix/var/nix/profiles/dojo-workspace/bin/dojo-init /run/dojo/bin/sleep 6h
+root           7       1  0 13:22 ?        00:00:00 /run/dojo/bin/sleep 6h
+root         138       1  0 13:22 ?        00:00:00 /bin/bash /challenge/.init
+root         139       1  0 13:22 ?        00:00:00 /bin/bash /challenge/.init
+root         140       1  0 13:22 ?        00:00:00 su -c exec /challenge/decoy > /tmp/flag_fifo hacker
+root         141     138  0 13:22 ?        00:00:00 sleep 6h
+root         142     139  0 13:22 ?        00:00:00 sleep 6h
+hacker       143     140  0 13:22 ?        00:00:00 /usr/bin/python /challenge/decoy
+hacker       145       0  0 13:22 pts/0    00:00:00 /nix/store/0nxvi9r5ymdlr2p24rjj9qzyms72zld1-bash-interactive-5.2p37/bin/bash /run/dojo/bin/ssh
+hacker       151     145  0 13:22 pts/0    00:00:00 /run/dojo/bin/bash --login
+hacker       169       1  0 13:22 ?        00:00:00 /nix/store/g0q8n7xfjp7znj41hcgrq893a9m0i474-ttyd-1.7.7/bin/ttyd --port 7681 --interface 0.0.0.
+hacker       173     169  0 13:22 pts/1    00:00:00 /run/dojo/bin/bash --login
+hacker       183     173  0 13:22 pts/1    00:00:00 ps -ef
+hacker@processes~killing-misbehaving-processes:~$ kill 143
+hacker@processes~killing-misbehaving-processes:~$ /challenge/run
+Sending the flag to /tmp/flag_fifo!
+hacker@processes~killing-misbehaving-processes:~$ cat /tmp/flag_fifo
+pwn.college{4yx8LDfjTF4NDRvtnf3CSxe11urCOkfaTVzKYCU27rLnWt.}
+pwn.college{ZmXYnD1Y.94jQnYAE7ra4A2Okgqit.h6zmuThqBAEx3bpXz}
+pwn.college{1jY1OWLjlZkMxllB9jXISW8qdiemPOrN1UzmXqTV4mfAFVU}
+pwn.college{zfEJtRoXTqp9lQnx0AdyXS70udkjnEP6V6-UswJad.7MN0p}
+pwn.college{Nv4g5RnEItNn0Z01tDRptEG6heitIYdsG9PHns03y3L30si}
+pwn.college{ow9qgM..6p1jJ8lyink00zpgIOH282XKNwvgq1IEzaROf2A}
+pwn.college{v6ti2IBa-TSd6RNyiwMq3x68pMrnH1jbd9OTzZSx05kzumh}
+.
+.
+pwn.college{a-FjlzGfKYBVRVNhdZ7vpvxOlCyYMwVTimEJOUyHYBpVvNq}
+pwn.college{ETmGArtt2Q6TAkaCERtuPLlqOGVmcDko0fMZXN.KUmae4qj}
+pwn.college{NsiS8qP5d350ZHzvYAGoUSgBF9XAM--EPWs5shOySWofNlp}
+pwn.college{KzWN-FpNCZPkM97yopBdSibmAW0z21W3W1AEuaHuz6tOXTE}
+pwn.college{cJDFOYQe4wKtqnll5r.AYObQrNqlgmJqSW.vZAwTfwGTznh}
+^C
+hacker@processes~killing-misbehaving-processes:~$ cat /tmp/flag_fifo
+^C
+hacker@processes~killing-misbehaving-processes:~$ /challenge/run
+Sending the flag to /tmp/flag_fifo!
+hacker@processes~killing-misbehaving-processes:~$ cat /tmp/flag_fifo
+pwn.college{cnBgyxZu_14qmwG0onOnBkQYSMu.0FNzMDOxwCM3gjNzEzW}
 ```
 
 ### What I learned
-- 
+- Thus, we can kill misbehaving processes as and when required.
 
  ## Challenge 5: Suspending processes
 
