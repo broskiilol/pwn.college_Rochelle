@@ -38,7 +38,8 @@ They leave nothing but a single image, a relic carrying his final secret. Hidden
 
 ### Solve
 We get hint that key is *hidden within layers*. We manipulate the image by uploading in exiftool. Thus we get another image which contains the flag
-![alt text](flag.png)
+<img width="640" height="613" alt="flag" src="https://github.com/user-attachments/assets/3126bb8b-f083-4ca5-a575-0481f05233c2" />
+
 Flag: ```citadel{17_1s_jus7_7h3_b3g1nn1ng}```
 
 ## Challenge 4: Track8
@@ -139,7 +140,8 @@ Challenge: https://therobotstrail.citadel.cryptonitemit.in
 - On *hidden* class, we get hint to search */robots.txt*
   ![alt text](image-5.png)
 - From here, we get hint as such 
-   ![alt text](image-6.png)
+   <img width="1061" height="328" alt="image" src="https://github.com/user-attachments/assets/7874840e-0f96-489a-8a90-852b9cc22e9f" />
+
 - file */etc/passwd* tells us to *Check the web server config at /var/www/html/config.php:/home/webadmin:/bin/bash\n*
 - We are asked to *Check the access logs for unusual activity*
    and log has location */var/log/apache2/access.log*
@@ -229,7 +231,8 @@ You must take the corrupted file and repair it to reveal the true code that will
 - we get a .wav file which is cannot play as it is corrupted (the extension is wrong, it should be a midi file as hinted by description *mid*)
 - Using hex editor, we change the file extention to midi file (change header to MThd)
 - opening the changed midi file in a music editor, we can see the keys played in it. The key pattern on screen shows us the flag.
-![alt text](image.png)
+<img width="1646" height="205" alt="image" src="https://github.com/user-attachments/assets/68f70469-dcb5-479f-a816-581b51483115" />
+
 Flag: ```citadel{8lackM1D1wa5c00l}```
 
 
@@ -306,7 +309,8 @@ Challenge: http://chall_citadel.cryptonitemit.in:32772/
 
 ### Solve
 - in the website link, we have an inputting area asking for pings.
-    ![alt text](image-3.png)
+    ![Capture](https://github.com/user-attachments/assets/bd27f775-bf3b-4348-bd58-060607fbdc9a)
+
 - After trying various pings, we realise that many separators (like . , ; {} etc) are *malicious*
 - %0A is being accepted, so we use it to enter commands
 - *ls* command helps list out all files, out of which one is *mission_briefing.txt*
@@ -341,7 +345,8 @@ Challenge: https://databaseincursion.citadel.cryptonitemit.in
 
 ### Solve
 The link given opens to a website asking for username and password (both of which we do not know yet)
-![alt text](database_incursion.JPG)
+![database_incursion](https://github.com/user-attachments/assets/d140da0e-b947-4b59-9017-48b7a7dac503)
+
 We use SQLi. We input something in the working payload which is always true (in this case, we inputted 1=1 which is always true)
 - From here, we come to a page where we have employee details (we need to enter admin password) Hint: *someone from management has the admin password.*
 - We see the management people `department='Management'--` and we see that *KIWI* has the password
@@ -359,7 +364,8 @@ Near the gate to the next floor you come across a CAPTCHA verification test, but
 
 ### Solve
 The image had a URL having overwriting.
-![alt text](BRATCHA.jpg)
+![BRATCHA](https://github.com/user-attachments/assets/7b7324a3-9840-4016-b7a1-b09219a9207d)
+
 - the characters were `c/s g/q x/y h/n x/v B/D h/n S/Z`
 - This meant 256 possible outcomes. Listed down these 256 outcomes and pasted into https://httpstatus.io/ 
 - This showed the only url which was working, *https://pastebin.com/sqxnxBhZ* where we got the flag
@@ -379,7 +385,8 @@ Flag format: citadel{XX.XXX_XXX.XXX}
 
 ### Solve
 A picture is given. We can see mount Fuji in the distance, meaning its in Japan. The compass direction showed the place was North of Mt.Fuji
-![alt text](location.png)
+<img width="1916" height="788" alt="location" src="https://github.com/user-attachments/assets/1739f8ee-6988-4420-b2fd-103686c73927" />
+
 The description hints at a temple or a cemetary (also confirmed by the picture)
 
 - On Google Earth, approximate coordinates were coming as 35.XXX and 138.XXX
@@ -425,6 +432,7 @@ Rumor has it that the corporation predicted the rise of the Citadel. Within the 
 We are given a .pptm file instructing us to use macro. So we enable the developer tab and view the VBA (Visual Basic) code
 There are three parts to the code. The first part is Base32 encoded, second is base64 and third is base32. Each part is further divided into many strings. Concatenating all of the string parts and decoding them gets us the bytes of a JPG file (image, as seen by the header `FF D8 FF E0`)
 Each part of the code is a part of the image forming
-![alt text](image-2.png)
+<img width="1000" height="778" alt="image" src="https://github.com/user-attachments/assets/877c55ec-47b0-443b-b28b-e7982275aa5a" />
+
 (we did not decode the entire code, we decoded the major part of it and we could make out the flag from that itself)
 Flag: ```citadel{gr4b_y0ur_l4bubus_m4tch4s_4nd_dub41_ch0c0l4t3s_y0u_4r3_1n_f0r_4_r1d3}```
