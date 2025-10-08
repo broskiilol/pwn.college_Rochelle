@@ -33,7 +33,8 @@ Flag: ```citadel{17_1s_jus7_7h3_b3g1nn1ng}```
 As you step into the second chamber, a figure manifests before you. Before you stands a forgotten deity, a dead god spoken of only in whispers. Known by countless names: “Apostle of Epilogue and Eternity,” “Lone Messiah” and many more lost to time.
 
 They leave nothing but a single image, a relic carrying his final secret. Hidden within its layers lies the key to ascend to the next chamber.
-![alt text](<challenge (1).jpg>)
+![challenge](https://github.com/user-attachments/assets/57fd0085-8dab-410b-b77f-5a794ec9cbef)
+
 
 ### Solve
 We get hint that key is *hidden within layers*. We manipulate the image by uploading in exiftool. Thus we get another image which contains the flag
