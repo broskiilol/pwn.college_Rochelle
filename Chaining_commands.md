@@ -239,13 +239,28 @@ pwn.college{U-5qJR9FfFnOOMqqApef_xyz1Q0.0FOzMDOxwCM3gjNzEzW}
 ## Challenge 12: Reading shell scripts
   
 ### My solve
-**Flag:** ` `
-
+**Flag:** `pwn.college{8uFrdg8QgnxmwXvWx7HiKZFMA7B.0lMwgDOxwCM3gjNzEzW} `
+reading the *run* file code, we can see the password needed. Thus we get the flag
 
 
 ```bash
+hacker@chaining~reading-shell-scripts:~$ cat /challenge/run
+#!/opt/pwn.college/bash
+
+read GUESS
+if [ "$GUESS" == "hack the PLANET" ]
+then
+        echo "CORRECT! Your flag:"
+        cat /flag
+else
+        echo "Read the /challenge/run file to figure out the correct password!"
+fi
+hacker@chaining~reading-shell-scripts:~$ /challenge/run
+hack the PLANET
+CORRECT! Your flag:
+pwn.college{8uFrdg8QgnxmwXvWx7HiKZFMA7B.0lMwgDOxwCM3gjNzEzW}
 
 ```
 
 ### What I learned
-- 
+- we can read code of the program and figure out what the password needs to be. in te above bash, the if-else statement shows us that *hack the PLANET* is the needed password 
