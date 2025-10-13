@@ -1,4 +1,7 @@
 # Perceiving Permissions
+ WE can list the permissions for a file using ls -l
+ The first letter depicts the file type. *d* for directory, *-* for normal file, etc.
+ The next 9 spaces are dedicated to the owner, the owner group, and other users
  
 ## Challenge 1: Changing file ownership
 
@@ -18,6 +21,7 @@ pwn.college{kX_TmNgPWsCwcZP3svNw5hdb-Xv.QXxEjN0wCM3gjNzEzW}
 
 
 ## Challenge 2: Groups and files
+The flag file is currently owned by the root group (which *hacker* is not a part of). so we need to change our group.
 ### My solve
 **Flag:** `pwn.college{o2n71g72V8Go0gboSZOKO4r4nnz.QXxcjM1wCM3gjNzEzW}`
 
@@ -572,6 +576,6 @@ pwn.college{MPLOpEfLplGQ4NHJsrS86ahVKuH.QXzEjN0wCM3gjNzEzW}
 
 ### What I learned
 - The "Set User ID" (SUID) permissions bit allows the user to run a program as the owner of that program's file 
-- The s signifies that the program is executable with SUID. 
+- The *s* in permissions list signifies that the program is executable with SUID. 
 - The program will execute as the owner user regardless of what user runs the program
 
