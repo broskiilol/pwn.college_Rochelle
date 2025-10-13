@@ -50,6 +50,7 @@ Nice chaining! Flag: pwn.college{8IXZAPy61Y2NWhnezMkHicrFOfz.01M0MDOxwCM3gjNzEzW
 
 ## Challenge 4: Your first shell script
   Understanding shell script
+  Shell script is used to automate tasks. We dont need to manually input everything as it is taken from the text editor
 ### My solve
 **Flag:** `pwn.college{YHVyDYXAz3jJaEGJ3UpUB2rMOOM.QXxcDO0wCM3gjNzEzW`
 
@@ -91,7 +92,7 @@ pwn.college{sFRMVr2B474iqAo7Ll6dOc0u40c.QX4ETO0wCM3gjNzEzW}
 ### My solve
 **Flag:** `pwn.college{Yu7a94bZyx9_CAqh2UJ0ot0wVXz.QX0cjM1wCM3gjNzEzW}`
 
-created shell script *shell.sh*. allowed executing powers to the user using *+x* and ran the script
+created shell script *shell.sh*. allowed executing powers to the user using *+x* (from permissions module) and ran the script
 ```bash
 hacker@chaining~executable-shell-scripts:~$ touch shell.sh
 hacker@chaining~executable-shell-scripts:~$ nano shell.sh
@@ -103,9 +104,10 @@ pwn.college{Yu7a94bZyx9_CAqh2UJ0ot0wVXz.QX0cjM1wCM3gjNzEzW}
 
 ### What I learned
 - we can invoke the shell script without using *bash* by making the script executable
+- *./* means the shell is in the current directory
 
 ## Challenge 7: Understanding shebangs
-
+A shebang is what tells the O.S. what interpreter (according to the programming language in which the code is written) needs to be used for the rest of the script
 ### My solve
 **Flag:** `pwn.college{c2GgX22Ow3Myw8V_xqxQ2Y88T2m.0VOzMDOxwCM3gjNzEzW}`
 
@@ -152,7 +154,7 @@ pwn.college{obw2HvLnI7XcfXJc8kZehsBYnAv.0VNzMDOxwCM3gjNzEzW}
 ``` 
 
 ### What I learned
-- We can use arguments in shell variables 
+- We can use arguments in shell variables which are accessible via special variables. 
 - $1 is for first argument, $2 for second argument, etc.
 
  
@@ -263,4 +265,4 @@ pwn.college{8uFrdg8QgnxmwXvWx7HiKZFMA7B.0lMwgDOxwCM3gjNzEzW}
 ```
 
 ### What I learned
-- we can read code of the program and figure out what the password needs to be. in te above bash, the if-else statement shows us that *hack the PLANET* is the needed password 
+- we can read code of the program and figure out the working of the code. in the above bash, the if-else statement shows us that *hack the PLANET* is the needed password 
