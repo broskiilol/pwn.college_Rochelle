@@ -15,6 +15,7 @@ pwn.college{YWoZNKD0GmPO_cHkYbAhPQgE8Qd.0VN4IDOxwCM3gjNzEzW}
 
 
 ## Challenge 2: Detaching and attaching
+ Detaching basically means disconnecting from the current running screen, without stopping the processes on it. It will still be running in the background.
 ### My solve
 **Flag:** `pwn.college{4o9_pY72VXNGF7ZfFL6EQaoWpTK.0lN4IDOxwCM3gjNzEzW}`
 Opened a screen, detached from it and ran *run*, the reattached.
@@ -63,7 +64,7 @@ pwn.college{kQ6QjqWWAqn36CdnHggI74TEGgV.01N4IDOxwCM3gjNzEzW}
 ```
 
 ### What I learned
-- *screen -ls* is used to list all sessions. Is also shows if the session is attached or not
+- *screen -ls* is used to list all sessions. ls also shows if the session is attached or not
 - We can thus accordingly reattach to the screen we want
 
 ## Challenge 4: Switching windows
@@ -89,7 +90,7 @@ Here is your flag: pwn.college{8JcMsmktr_XxSC1YF3NPT1QE-dv.0FO4IDOxwCM3gjNzEzW}
    - Ctrl-A n - Next window
    - Ctrl-A p - Previous window
    - Ctrl-A (0-9) - Jump directly to window 0-9
-   - Ctrl-A '' - bring up a selection menu of all of the windows
+   - Ctrl-A " - bring up a selection menu of all of the windows
 
 ## Challenge 5: Detaching and attaching (tmux)
  tmux = terminal multiplexer
