@@ -347,10 +347,10 @@ Challenge: https://databaseincursion.citadel.cryptonitemit.in
 The link given opens to a website asking for username and password (both of which we do not know yet)
 ![database_incursion](https://github.com/user-attachments/assets/d140da0e-b947-4b59-9017-48b7a7dac503)
 
-We use SQLi. We input something in the working payload which is always true (in this case, we inputted 1=1 which is always true)
+We use SQLi. We input something in the working payload which is always true (in this case, we inputted ' OR 1=1 which is always true)
 - From here, we come to a page where we have employee details (we need to enter admin password) Hint: *someone from management has the admin password.*
 - We see the management people `department='Management'--` and we see that *KIWI* has the password
-- We search for kiwi from management `(department='Management' and name='Kiwi')--`
+- We search for kiwi from management (just searching "kiwi" does not help as it gives the names of a bunch of other kiwis) `(department='Management' and name='Kiwi')--`
 Thus we get the flag from the employee
 Flag: ```citadel{wh3n_w1ll_y0u_f1nd_0u7_1f_175_5ql_0r_53qu3l?}```
 
